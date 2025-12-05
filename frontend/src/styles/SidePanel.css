@@ -1,0 +1,171 @@
+/* SidePanel.css */
+
+.side-panel-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.side-panel-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.side-panel {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background: var(--color-surface);
+    z-index: 2001;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+    border-left: 1px solid var(--color-border);
+}
+
+.side-panel.open {
+    right: 0;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    color: var(--color-text-muted);
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+.close-btn:hover {
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+.panel-header {
+    padding: 2rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.panel-header h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.panel-links {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow-y: auto;
+}
+
+.panel-links li a {
+    display: block;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.panel-links li a:hover,
+.panel-links li a.active {
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(5px);
+}
+
+.panel-links li a.active {
+    color: var(--color-primary);
+    background: rgba(128, 0, 0, 0.1);
+}
+
+/* Language Selector */
+.language-section {
+    padding: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    margin-top: auto;
+}
+
+.language-section h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.language-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.lang-btn {
+    padding: 0.5rem;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.lang-btn:hover {
+    border-color: var(--color-text);
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.lang-btn.active {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background: rgba(128, 0, 0, 0.1);
+}
+
+.panel-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.panel-footer p {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+}
+
+/* Light mode overrides */
+body.light-mode .side-panel {
+    background: var(--color-surface);
+    border-left-color: var(--color-border);
+}
+
+body.light-mode .panel-links li a:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .panel-links li a.active {
+    background: rgba(160, 0, 0, 0.1);
+}
